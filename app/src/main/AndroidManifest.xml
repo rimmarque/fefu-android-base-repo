@@ -2,12 +2,50 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ru.fefu.activitytracker">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <application
+        android:name=".App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_registration_bicycles"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_registration_bicycles"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Activity" />
+        android:theme="@style/Theme.Activity">
+        <activity
+            android:name=".map.NewActivity"
+            android:exported="true"
+            android:label="@string/title_activity_new"
+
+            android:theme="@style/Theme.Activity.NoActionBar">
+        </activity>
+        <activity
+            android:name=".tracker.MainActivity"
+            android:exported="true"
+            android:label="@string/title_activity_main">
+        </activity>
+        <activity
+            android:name=".main.WelcomeScreen"
+            android:exported="true">
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+        </activity>
+        <activity
+            android:name=".main.Login"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".main.Registration"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+    </application>
 
 </manifest>
