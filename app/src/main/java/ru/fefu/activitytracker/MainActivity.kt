@@ -57,4 +57,21 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
+
+    override fun onBackPressed() {
+        val active = supportFragmentManager.fragments.firstOrNull{!it.isHidden}!!
+        val childManager = active.childFragmentManager
+
+        if (childManager.backStackEntryCount != 0) {
+            childManager.popBackStack()
+        }
+
+        else if (supportFragmentManager.backStackEntryCount != 0) {
+            supportFragmentManager.popBackStack()
+        }
+
+        else {
+            super.onBackPressed()
+        }
+    }
 }
